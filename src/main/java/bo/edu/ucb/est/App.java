@@ -10,6 +10,7 @@ public class App
     
     public static void main( String[] args )
     {
+        
         try {
                 TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
                 telegramBotsApi.registerBot(new Central());

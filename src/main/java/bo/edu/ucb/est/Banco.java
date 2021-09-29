@@ -32,11 +32,11 @@ public class Banco {
         clientes.add(cliente);
     }
     
-    public Cliente buscarClientePorPIN(String NombreCliente,String pin) {
+    public Cliente buscarIDClienteUsuario(Long ID) {
         
         for ( int i = 0; i < clientes.size(); i++) {
             Cliente cli = clientes.get(i); // Sacando elemento por elemento
-            if (cli.getNombre().equals(NombreCliente) && cli.getPinSeguridad().equals(pin)) {
+            if (cli.getNombre().equals(ID)) {
                 return cli;
             }
         }

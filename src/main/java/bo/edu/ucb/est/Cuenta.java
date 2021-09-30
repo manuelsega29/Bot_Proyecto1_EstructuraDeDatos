@@ -7,7 +7,7 @@ public class Cuenta {
     private String moneda;
     private String tipo;
     private double saldo;
-
+    
     public Cuenta(String moneda, String tipo, double saldoInicial) {
         this.moneda = moneda;
         this.tipo = tipo;
@@ -35,9 +35,7 @@ public class Cuenta {
         }
         return resultado;
     }
-    
-    
-            
+         
     public String getMoneda() {
         return moneda;
     }
@@ -61,6 +59,5 @@ public class Cuenta {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
-    
     
 }

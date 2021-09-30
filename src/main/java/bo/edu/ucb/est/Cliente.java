@@ -5,11 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-
-
 public class Cliente {
-    
-    
     
     private String nombre;
     private String codigoCliente;
@@ -69,7 +65,5 @@ public class Cliente {
     public void setCuentas(List<Cuenta> cuentas) {
         this.cuentas = cuentas;
     }
-    
-    
-    
+  
 }

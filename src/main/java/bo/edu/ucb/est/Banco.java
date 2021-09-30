@@ -43,6 +43,7 @@ public class Banco {
         return null;
     }
     
+    
     public Cliente buscarIDClienteUsuario(Long ID) {
         
         for ( int i = 0; i < clientes.size(); i++) {

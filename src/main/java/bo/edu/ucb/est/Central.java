@@ -17,13 +17,11 @@ public class Central extends TelegramLongPollingBot {
             + "\na. Ver saldo \nb. Retirar Dinero \nc. Abonar Dinero \nd. Crear Cuenta \ne. Salir";
     private String Despedida="Ok, que tengas un buen día!!!!";
     private String RespuestaUs;
-    private String OpcionMenu;
     private Map Pin1 = new HashMap();
     private Map NombreUsuario1 = new HashMap();
     private Map cliente11 = new HashMap();
     private Cliente cliente1;
-    private Map cuentaUs1 = new HashMap();
-    //private List<Cuenta> cuentaUs;
+    private Map OpcionMenu1=new HashMap();
     private Map EstadoInicial1 = new HashMap();
     private Integer EstadoInicial;
     private Map AuxMenu1=new HashMap();
@@ -36,7 +34,6 @@ public class Central extends TelegramLongPollingBot {
     private Map VerificacionSiEsSocio1=new HashMap();
     private Long ID;
     private Cliente clientenuevo;
-    private Integer numeroCuentas;
     private Integer VerificacionSiEsSocio;
     private Integer auxi;
     private Integer AuxMenu;
@@ -65,6 +62,8 @@ public class Central extends TelegramLongPollingBot {
                 VerificacionSiEsSocio=0;
                 VerificacionSiEsSocio1.put(ID,0);
             }
+            
+            OpcionMenu1.put(ID,(update.getMessage().getText()));
                         
             switch (EstadoInicial){
                 case 0:     
@@ -162,10 +161,9 @@ public class Central extends TelegramLongPollingBot {
                     }
                     System.out.println("El Usuario es " + cliente1.getNombre() + " con el PIN " + cliente1.getPinSeguridad());
                     
-                    OpcionMenu=update.getMessage().getText();
+                    String Opcion=(String)OpcionMenu1.get(ID);
                     //////////////////// CHEQUEAR TUS CUENTAS ES AQUISITOS
-                    System.out.println(OpcionMenu);
-                    if( auxi==1 || OpcionMenu.equals("a") || OpcionMenu==("A") ){
+                    if( auxi==1 || Opcion.equals("a") || Opcion.equals("A") ){
                         auxi1.put(ID,1);
                         if(AuxMenu==0){
                             if(y>0){
@@ -237,7 +235,7 @@ public class Central extends TelegramLongPollingBot {
                             }
                         }
                     ///////////////////// DESEAS DEPSiTAR SALE AQUíI
-                    }else if(auxi==2||OpcionMenu.equals("b")||OpcionMenu.equals("B")){
+                    }else if(auxi==2||Opcion.equals("b")||Opcion.equals("B")){
                         auxi1.put(ID,2);
                         RespuestaUs=update.getMessage().getText();
                         try{
@@ -331,7 +329,7 @@ public class Central extends TelegramLongPollingBot {
                             AuxMenu1.put(ID,0);
                         }                 
                     ///////////////// QUIERES DEPOSITAR SALE ESTA    
-                    }else if(auxi==3||OpcionMenu.equals("C")||OpcionMenu.equals("c")){
+                    }else if(auxi==3||Opcion.equals("C")||Opcion.equals("c")){
                         auxi1.put(ID,3);
                         RespuestaUs=update.getMessage().getText();
                         try{
@@ -425,7 +423,7 @@ public class Central extends TelegramLongPollingBot {
                             AuxMenu1.put(ID,0);
                         }
                     /////////// DESEAS AGREGAR UNA CUENTA? SALE ESTA VAIN    
-                    }else if(auxi==4||OpcionMenu.equals("d")||OpcionMenu.equals("D")){
+                    }else if(auxi==4||Opcion.equals("d")||Opcion.equals("D")){
                         auxi1.put(ID,4);
                         if(AuxMenu==0){
                             message.setText("Qué tipo de cuenta deseas: \n1.Caja de Ahorros \n2.Cuenta Corriente");
@@ -541,7 +539,7 @@ public class Central extends TelegramLongPollingBot {
                             }
                         }
                     ///////////////////////// CUANDO TE QUIERES IR SALE ESTOS    
-                    }else if(OpcionMenu.equals("E") || OpcionMenu.equals("e")){
+                    }else if(Opcion.equals("E") || Opcion.equals("e")){
                         message.setText("Ok, que tengas un buen día");
                         try{
                             execute(message);
@@ -570,13 +568,10 @@ public class Central extends TelegramLongPollingBot {
         }
     }
 
-    
-    
     @Override
     public String getBotUsername() {
         return "estructus_manuel_bot";
     }
     
-    
-    
+       
 }

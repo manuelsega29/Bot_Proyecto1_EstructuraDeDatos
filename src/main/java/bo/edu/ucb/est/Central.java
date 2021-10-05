@@ -13,7 +13,7 @@ import java.util.Map;
 
 
 public class Central extends TelegramLongPollingBot {
-    private String MenuInicio="Bienvenido\nEste es tu menú de opciones, elije lo que desees:"
+    private String MenuInicio="Bienvenido \nEste es tu menú de opciones, elije lo que desees:"
             + "\na. Ver saldo \nb. Retirar Dinero \nc. Abonar Dinero \nd. Crear Cuenta \ne. Salir";
     private String Despedida="Ok, que tengas un buen día!!!!";
     private String RespuestaUs;
@@ -143,6 +143,7 @@ public class Central extends TelegramLongPollingBot {
                     break;
                  /////////////////   
                 case 3:
+                    
                     auxi=(Integer)auxi1.get(ID);
                     if(auxi==(null)){
                         auxi=0;
@@ -201,7 +202,7 @@ public class Central extends TelegramLongPollingBot {
                             }
                             if(DatosDeOpcionUsuario<=y && DatosDeOpcionUsuario>=1){
                                 DatosDeOpcionUsuario=DatosDeOpcionUsuario-1;
-                                message.setText("El saldo de la cuenta es "  + cuentaUs.get(DatosDeOpcionUsuario).MostrarSaldo() + " en " +cuentaUs.get(DatosDeOpcionUsuario).getMoneda()+ " de tipo "+ cuentaUs.get(DatosDeOpcionUsuario).getTipo());
+                                message.setText("Esta es tu cuenta número "+(DatosDeOpcionUsuario+1)+"; cuyo saldo  es "  + cuentaUs.get(DatosDeOpcionUsuario).MostrarSaldo() + " en " +cuentaUs.get(DatosDeOpcionUsuario).getMoneda()+ " de tipo "+ cuentaUs.get(DatosDeOpcionUsuario).getTipo());
                                 try{
                                    execute(message);
                                 }catch(TelegramApiException e){ 
@@ -342,7 +343,7 @@ public class Central extends TelegramLongPollingBot {
                                 auxi1.put(ID,0);
                                 AuxMenu1.put(ID, 0);
                                 EstadoInicial1.put(ID,3);
-                                message.setText("No tienes cuentas, crea un cuenta!!");
+                                message.setText("No tienes cuentas "+cliente1.getNombre()+", crea un cuenta!!");
                                 try{
                                     execute(message);
                                 }catch(TelegramApiException e){
@@ -487,7 +488,7 @@ public class Central extends TelegramLongPollingBot {
                                     auxi1.put(ID,0);
                                     cuentanueva=new Cuenta("BOB",((String)RespaldoDatosDeOpcionUsuario1.get(ID)),0.0);
                                     cliente1.agregarCuenta(cuentanueva);
-                                    message.setText("Cuenta creada!");
+                                    message.setText("Cuenta creada!!!!!");
                                     try{
                                         execute(message);
                                     }catch(TelegramApiException e){
@@ -506,7 +507,7 @@ public class Central extends TelegramLongPollingBot {
                                     auxi1.put(ID,0);
                                     cuentanueva=new Cuenta("USD",((String)RespaldoDatosDeOpcionUsuario1.get(ID)),0.0);
                                     cliente1.agregarCuenta(cuentanueva);
-                                    message.setText("Cuenta creada MarcA!");
+                                    message.setText("Cuenta creada!!!!!");
                                     try{
                                         execute(message);
                                     }catch(TelegramApiException e){
